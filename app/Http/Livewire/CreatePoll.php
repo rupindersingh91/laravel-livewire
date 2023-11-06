@@ -10,15 +10,15 @@ class CreatePoll extends Component
     public $title;
     public $options = ['First'];
 
-    // protected $rules = [
-    //     'title' => 'required|min:3|max:255',
-    //     'options' => 'required|array|min:1|max:10',
-    //     'options.*' => 'required|min:1|max:255'
-    // ];
+    protected $rules = [
+        'title' => 'required|min:3|max:255',
+        'options' => 'required|array|min:1|max:10',
+        'options.*' => 'required|min:1|max:255'
+    ];
 
-    // protected $messages = [
-    //     'options.*' => "The option can\'t be empty."
-    // ];
+    protected $messages = [
+        'options.*' => "The option can\'t be empty."
+    ];
 
     /**
      * Render the view for creating a poll.
@@ -60,7 +60,7 @@ class CreatePoll extends Component
     public function createPoll()
     {
         // Validate the form
-        // $this->validate();
+        $this->validate();
 
         // Create a new poll with the given title
         $poll = Poll::create([
