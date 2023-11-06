@@ -55,6 +55,18 @@ class CreatePoll extends Component
     }
 
     /**
+     * Handle the updated event for a given property.
+     *
+     * @param string $propertyName The name of the property that was updated.
+     * @return void
+     */
+    public function updated($propertyName)
+    {
+        // Validate the given property only
+        $this->validateOnly($propertyName);
+    }
+
+    /**
      * Creates a poll with the given title and options.
      */
     public function createPoll()
