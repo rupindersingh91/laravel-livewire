@@ -3,11 +3,22 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Poll;
 
 class CreatePoll extends Component
 {
     public $title;
     public $options = ['First'];
+
+    // protected $rules = [
+    //     'title' => 'required|min:3|max:255',
+    //     'options' => 'required|array|min:1|max:10',
+    //     'options.*' => 'required|min:1|max:255'
+    // ];
+
+    // protected $messages = [
+    //     'options.*' => "The option can\'t be empty."
+    // ];
 
     /**
      * Render the view for creating a poll.
@@ -41,5 +52,27 @@ class CreatePoll extends Component
 
         // Re-index the options array
         $this->options = array_values($this->options);
+    }
+
+    /**
+     * Creates a poll with the given title and options.
+     */
+    public function createPoll()
+    {
+        // Validate the form
+        // $this->validate();
+
+        // Create a new poll with the given title
+        $poll = Poll::create([
+            'title' => $this->title
+        ]);
+
+        // Create options for the poll
+        foreach ($this->options as $optionName) {
+            $poll->options()->create(['name' => $optionName]);
+        }
+
+        // Reset the title and options
+        $this->reset(['title', 'options']);
     }
 }
