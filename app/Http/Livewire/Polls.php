@@ -6,6 +6,11 @@ use Livewire\Component;
 
 class Polls extends Component
 {
+
+    protected $listeners = [
+        'pollCreated' => 'render'
+    ];
+
     /**
      * Render the polls view.
      *

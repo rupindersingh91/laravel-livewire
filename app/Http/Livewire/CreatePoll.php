@@ -86,5 +86,7 @@ class CreatePoll extends Component
 
         // Reset the title and options
         $this->reset(['title', 'options']);
+
+        $this->emit('pollCreated');
     }
 }
