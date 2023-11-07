@@ -24,4 +24,10 @@ class Polls extends Component
         // Return the polls view with the retrieved polls
         return view('livewire.polls', ['polls' => $polls]);
     }
+
+    public function vote($optionId)
+    {
+        $option = \App\Models\Option::findOrfail($optionId);
+        $option->votes()->create();
+    }
 }
