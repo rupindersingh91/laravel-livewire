@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Option;
 use Livewire\Component;
 
 class Polls extends Component
@@ -25,9 +26,15 @@ class Polls extends Component
         return view('livewire.polls', ['polls' => $polls]);
     }
 
-    public function vote($optionId)
+    /**
+     * Vote for an option.
+     *
+     * @param Option $option The option to vote for.
+     * @return void
+     */
+    public function vote(Option $option)
     {
-        $option = \App\Models\Option::findOrfail($optionId);
+        // Create a new vote for the option
         $option->votes()->create();
     }
 }
