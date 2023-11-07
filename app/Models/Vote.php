@@ -10,6 +10,11 @@ class Vote extends Model
 {
     use HasFactory;
 
+    /**
+     * Get the option associated with the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function option(): BelongsTo
     {
         return $this->belongsTo(Option::class);

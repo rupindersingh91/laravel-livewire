@@ -12,8 +12,14 @@ class Poll extends Model
 
     protected $fillable = ['title'];
 
+    /**
+     * Get the options associated with the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function options(): HasMany
     {
+        // Return the hasMany relationship with the Option model
         return $this->hasMany(Option::class);
     }
 }
